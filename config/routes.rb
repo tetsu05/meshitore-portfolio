@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'homes/index'
-  devise_for :users
   root to: 'homes#index'
+  devise_for :users
+  resources :users, only: %i[show index edit update]
 end

@@ -4,25 +4,38 @@
     <title>Meshitore</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/809d1717b2.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class= "navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class= "container">
+          <a class= "navbar-brand"  href= "/">めしトレ</a>
+         <ul class= "navbar-nav ml-auto">
     <% if user_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "ユーザー" , users_path, class: "fas fa-users nav-link text-light" %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
       </li>
     <% else %>
       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-light" %>
       </li>
       <li>
-        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "ログイン", new_user_session_path, class: "nav-link text-light" %>
       </li>
     <% end %>
-    
+         </ul>
+        </div>
+      </nav>
+     </header>
+     <%= notice %>
+     
     <%= yield %>
   </body>
 </html>
