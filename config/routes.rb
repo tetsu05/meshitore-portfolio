@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'homes#index'
   devise_for :users
   resources :users, only: %i[show index edit update]
+  resources :posts
 end

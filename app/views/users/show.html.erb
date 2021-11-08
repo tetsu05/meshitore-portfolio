@@ -1,9 +1,9 @@
-  
-  
+
+
   <label style="display:block;">名前</label>
     <%= @user.name %>
   <label style="display:block;">プロフィール画像</label>
-    <%= attachment_image_tag(@user, :Profile_image_id, :fill, 50, 50, fallback: "no-image.jpg") %>
+    <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg") %>
   <label style="display:block;">自己紹介</label>
     <%= @user.introduction %>
   <p class = "text-center border">
