@@ -17,6 +17,12 @@
          <ul class= "navbar-nav ml-auto">
     <% if user_signed_in? %>
       <li>
+        <%= link_to "みんなの投稿" , posts_path, class: "fas fa-users nav-link text-light" %>
+      </li>
+      <li>
+        <%= link_to "レシピ投稿" , new_post_path, class: "fas fa-users nav-link text-light" %>
+      </li>
+      <li>
         <%= link_to "ユーザー" , users_path, class: "fas fa-users nav-link text-light" %>
       </li>
       <li>

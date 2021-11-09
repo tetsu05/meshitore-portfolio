@@ -1,1 +1,9 @@
-<h1>みんなの投稿</h1>
+<h2>みんなの投稿一覧</h2>
+<% @posts.each do |post| %>
+  <%= link_to post_path(post.id) do %>
+<!-- 料理タイトル -->
+    <%= post.title %>
+<!-- 料理画像 -->
+    <%= attachment_image_tag(post, :cooking_image, :fill, 50, 50, fallback: "no-image.jpg") %>
+  <% end %>
+<% end %>
