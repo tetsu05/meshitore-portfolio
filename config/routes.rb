@@ -17,4 +17,12 @@ Rails.application.routes.draw do
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'done', to: 'contacts#done', as: 'done'
   
+  
+  resources :notifications, only: :index  do
+    collection do 
+      delete :destroy_all
+    end
+  end
+ 
+  
 end

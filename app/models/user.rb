@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  #ユーザーと通知モデルの紐付け
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   attachment :profile_image
   has_many :posts, dependent: :destroy
@@ -23,7 +27,7 @@ class User < ApplicationRecord
   # フォローしているユーザーの情報がわかるようになる
   has_many :followings, through: :active_relationships, source: :followed
   # 中間テーブルpassive_relationshipsを通って、フォローする側(follower)を集める処理をfollowingsと命名
-  #　フォローされているユーザーの情報がわかるようになる
+  #フォローされているユーザーの情報がわかるようになる
   has_many :followers, through: :passive_relationships, source: :follower
   
   # フォローする
@@ -37,6 +41,15 @@ class User < ApplicationRecord
   # すでにフォローしているのか確認
   def following?(user)
     followings.include?(user)
+  end
+  
+  #通知レコード作成メソッド
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(visited_id: id,action: 'follow')
+      notification.save if notification.valid?
+    end
   end
   
 end
