@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).order(name: :asc).page(params[:page])
   end
 
   def edit

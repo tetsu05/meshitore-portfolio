@@ -1,4 +1,16 @@
 <h2>みんなの投稿一覧</h2>
+<%= render 'search_form' %>
+<% @all_ranks.each.with_index(1) do |post,i| %>
+  第<%= i %>位
+  <%= link_to post_path(post.id) do %>
+<!-- 料理タイトル -->
+    <%= post.title %>
+<!-- 料理画像 -->
+    <%= attachment_image_tag(post, :cooking_image, :fill, 50, 50, fallback: "no-image.jpg") %>
+  <% end %>
+<% end %>
+
+
 <% @posts.each do |post| %>
   <%= link_to post_path(post.id) do %>
 <!-- 料理タイトル -->
