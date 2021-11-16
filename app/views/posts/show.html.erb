@@ -25,20 +25,11 @@
   <label style="display:block;">レシピ紹介</label>
     <%= @post.body %>
   <!-- 投稿に対するいいね機能 -->
-  <% if @post.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
-
+  <td>
+    <div id="favorite_buttons_<%= @post.id %>">
+　　　<%= render "favorites/favorites", post: @post %>
+　　</div>
+　</td>
   <!-- 投稿対するコメント機能 -->
 <div>
   <p>コメント件数：<%= @post.post_comments.count %></p>
@@ -61,7 +52,7 @@
     <%= f.submit "送信する" %>
   <% end %>
 </div>
-    
+
   <p class = "text-center border">
     <%= link_to  edit_post_path(@post), class: "btn btn-whiht" do %>
   <i class="fas fa-user-cog"></i>
