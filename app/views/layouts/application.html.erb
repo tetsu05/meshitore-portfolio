@@ -7,42 +7,49 @@
     <script src="https://kit.fontawesome.com/809d1717b2.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel = "preconnect" href = "https://fonts.googleapis.com">
+    <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
+    <link href = "https： //fonts.googleapis.com/css2？family 家族=能登+セリフ+ JP：wght @ 200; 300＆ display = swap "rel =" stylesheet ">
   </head>
 
   <body>
     <header>
-      <nav class= "navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class= "navbar navbar-expand-lg navbar-dark" style="background-color:#4BB5CF;">
         <div class= "container">
-          <a class= "navbar-brand"  href= "/">めしトレ</a>
+          <div class="navbar-brand">
+            <%= link_to homes_index_path do %>
+              <%= image_tag('logo.jpg', size: '200x80') %>
+            <% end %>
+          </div>
          <ul class= "navbar-nav ml-auto">
     <% if user_signed_in? %>
       <li>
-        <%= link_to "みんなの投稿" , posts_path, class: "fas fa-users nav-link text-light" %>
+        <%= link_to "みんなの投稿" , posts_path, class: "fas fa-utensils nav-link text-light" %>
       </li>
       <li>
-        <%= link_to "レシピ投稿" , new_post_path, class: "fas fa-users nav-link text-light" %>
+        <%= link_to "レシピ投稿" , new_post_path, class: "fas fa-newspaper nav-link text-light" %>
       </li>
       <li>
         <%= link_to "ユーザー" , users_path, class: "fas fa-users nav-link text-light" %>
       </li>
       <li>
-        <%= link_to "通知" , notifications_path, class: "fas fa-users nav-link text-light" %>
+        <%= link_to "通知" , notifications_path, class: "fas fa-bell nav-link text-light" %>
       </li>
       <li>
-        <%= link_to "カレンダー" , events_path, class: "fas fa-users nav-link text-light" %>
+        <%= link_to "カレンダー" , events_path, class: "fas fa-calendar-alt nav-link text-light" %>
       </li>
       <li>
-        <%= link_to "お問い合わせ" ,new_contact_path, class: "fas fa-users nav-link text-light" %>
+        <%= link_to "お問い合わせ" ,new_contact_path, class: "fas fa-envelope nav-link text-light" %>
       </li>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %>
       </li>
     <% else %>
       <li>
-        <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-light" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "fas fa-address-card nav-link text-light" %>
       </li>
       <li>
-        <%= link_to "ログイン", new_user_session_path, class: "nav-link text-light" %>
+        <%= link_to "ログイン", new_user_session_path, class: "fas fa-sign-in-alt nav-link text-light" %>
       </li>
     <% end %>
          </ul>
@@ -50,11 +57,11 @@
       </nav>
      </header>
      <%= notice %>
-     
+
     <%= yield %>
     <div id="footer" class="fixed-bottom" style="height:50px; background-color: #000000;">
         <p class="text-center " style="color:white">© 2021 meshitore</p>
     </div>
   </body>
-  
+
 </html>

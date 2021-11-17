@@ -1,19 +1,22 @@
-<h1>テスト</h1>
+<div class="container">
+    <div class="row">
+      <div class="col-10">
+<h2>毎日の摂取カロリーを記録しておこう！！</h2>
 
 <%= form_with(model: @event, local: true) do |form| %>
 
   <div class="title">
-    <%= form.label :title %>
+    <%= form.label :料理名など %>
     <%= form.text_field :title %>
   </div>
 
     <div class="time">
-    <%= form.label :start_time %>
+    <%= form.label :日付の設定「日付のみ合わせてください」 %>
     <%= form.datetime_select :start_time %>
   </div>
 
   <div class="content">
-    <%= form.label :content %>
+    <%= form.label :総摂取カロリーを書いてください！ %>
     <%= form.text_field :content %>
   </div>
 
@@ -23,3 +26,6 @@
   </div>
 
 <% end %>
+</div>
+</div>
+</div>
