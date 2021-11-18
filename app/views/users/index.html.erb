@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-10">
+    <div class="mx-auto col-10">
       <h2>ユーザ一覧</h2>
+      <%= paginate @users %>
       <%= render 'search_form' %>
       <%= render 'index',users: @users %>
+      <%= paginate @users %>
     </div>
   </div>
 </div>

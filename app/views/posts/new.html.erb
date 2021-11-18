@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
       <div class="col-10">
-<h1>自分のお気に入りのメニューを投稿しよう！</h1>
+<h2>自分のお気に入りのメニューを投稿しよう！</h2>
 <%= form_with(model: @post, local: true) do |f| %>
   <!-- タイトル -->
   <div>
@@ -11,7 +11,7 @@
 
   <!-- 評価 -->
   <div class="form-group row" id="star">
-    <%= f.label :rate,'ダイエットにオススメ度', class:'col-md-3 col-form-label' %>
+    <%= f.label :rate,'オススメ度', class:'col-md-3 col-form-label' %>
     <%= f.hidden_field :rate, id: :review_star %>
   </div>
 
@@ -40,7 +40,7 @@
   </div>
 
   <div>
-    <%= f.submit "投稿する", class: "btn btn-secondary" %>
+    <%= f.submit "投稿する", class: "btn btn-primary" %>
   </div>
 <% end %>
 </div>

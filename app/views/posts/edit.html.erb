@@ -26,7 +26,7 @@
   <label style="display:block;">料理画像</label>
   <%= f.attachment_field :cooking_image, placeholder: "プロフィール画像" %>
   <label style="display:block;">レシピ紹介</label>
-  <%= f.text_area :body %>
+  <%= f.text_area :body, size: '10x10', class: 'form-control' %>
   <%= f.submit "更新する", class: "btn btn-secondary" %>
 <% end %>
     </div>

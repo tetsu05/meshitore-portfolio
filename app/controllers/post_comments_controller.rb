@@ -8,13 +8,13 @@ class PostCommentsController < ApplicationController
     if @comment.save
       #通知の作成
       @comment_post.create_notification_comment!(current_user, @comment.id)
-      redirect_to post_path(@post)
     end
   end
 
   def destroy
-    PostComment.find_by(id: params[:id]).destroy
-    redirect_to post_path(params[:post_id])
+    @comment = PostComment.find_by(id: params[:id])
+    @post = @comment.post
+    @comment.destroy
   end
 
   private

@@ -5,12 +5,12 @@
 <h2>いいねランキング</h2>
 <% @all_ranks.each.with_index(1) do |post,i| %>
   <div class="col-lg-3">
-  第<%= i %>位
+    第<%= i %>位
   <%= link_to post_path(post.id) do %>
 <!-- 料理タイトル -->
     <%= post.title %>
 <!-- 料理画像 -->
-    <%= attachment_image_tag(post, :cooking_image, :fill, 100, 100, fallback: "no-image.jpg") %>
+    <%= attachment_image_tag(post, :cooking_image, fallback: "no-image.jpg", size:'200x200') %>
   </div>
   <% end %>
 <% end %>
@@ -20,7 +20,7 @@
 <!-- 料理タイトル -->
     <%= post.title %>
 <!-- 料理画像 -->
-    <%= attachment_image_tag(post, :cooking_image, :fill, 100, 100, fallback: "no-image.jpg") %>
+    <%= attachment_image_tag(post, :cooking_image, fallback: "no-image.jpg", size:'150x150') %>
   <% end %>
 <% end %>
 </div>

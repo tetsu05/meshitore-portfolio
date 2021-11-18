@@ -2,14 +2,14 @@
   <thead>
     <tr>
       <th>プロフィール画像</th>
-      <th>名前</th>
+      <th>ユーザー名</th>
       <th colspan="4"></th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= attachment_image_tag(user, :profile_image, :fill, 75, 75, fallback: "no-image.jpg") %></td>
+        <td><%= attachment_image_tag(user, :profile_image, fallback: "no-image.jpg", size:'100x100') %></td>
         <td><%= link_to user.name, user_path(user) %></td>
         <td><%= link_to "フォロー数: #{user.active_relationships.count}", user_follower_path(user.id) %></td>
         <td><%= link_to "フォロワー数: #{user.passive_relationships.count}", user_followed_path(user.id) %></td>
@@ -20,10 +20,8 @@
           <% else %>
             <%= link_to 'フォローする', user_relationships_path(user), method: :POST %>
           <% end %>
-
         <% end %>
         </td>
-
       </tr>
     <% end %>
   </tbody>

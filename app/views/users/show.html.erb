@@ -1,13 +1,18 @@
-
-
-  <label style="display:block;">名前</label>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <h2>プロフィール</h2>
+  <label style="display:block;">ユーザー名</label>
     <%= @user.name %>
   <label style="display:block;">プロフィール画像</label>
-    <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg") %>
+    <%= attachment_image_tag(@user, :profile_image, fallback: "no-image.jpg", size:'150x150') %>
   <label style="display:block;">自己紹介</label>
     <%= @user.introduction %>
   <p class = "text-center border">
     <%= link_to  edit_user_path(@user), class: "btn btn-whiht" do %>
-  <i class="fas fa-user-cog"></i>
+  <i class="fas fa-user-cog">プロフィールを変更する</i>
     <% end %>
   </p>
+    </div>
+  </div>
+</div>

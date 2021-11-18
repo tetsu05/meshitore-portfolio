@@ -1,9 +1,20 @@
+  <div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <div>投稿者
   <!-- ユーザ名 -->
     <%= @user.name %>
   <!-- プロフィール画像 -->
     <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg") %>
-  <!--星評価-->
-  <div id="star-rate-<%= @post.id %>"></div>
+    </div>
+  <!--料理タイトル-->
+  <label style="display:block;">料理タイトル</label>
+    <%= @post.title %>
+  <!-- 料理画像 -->
+  <label style="display:block;">料理画像</label>
+    <%= attachment_image_tag(@post, :cooking_image, fallback: "no-image.jpg", size:'300x300') %>
+    <!--星評価-->
+  <div id="star-rate-<%= @post.id %>">オススメ度</div>
     <script>
     $('#star-rate-<%= @post.id %>').raty({
       size: 36,
@@ -15,12 +26,6 @@
       score: <%= @post.rate %>,
     });
     </script>
-  <!--料理タイトル-->
-  <label style="display:block;">料理タイトル</label>
-    <%= @post.title %>
-  <!-- 料理画像 -->
-  <label style="display:block;">料理画像</label>
-    <%= attachment_image_tag(@post, :cooking_image, :fill, 50, 50, fallback: "no-image.jpg") %>
   <!-- レシピ紹介 -->
   <label style="display:block;">レシピ紹介</label>
     <%= @post.body %>
@@ -30,31 +35,23 @@
 　　　<%= render "favorites/favorites", post: @post %>
 　　</div>
 　</td>
+　<p class = "text-center border">
+    <%= link_to  edit_post_path(@post), class: "btn btn-whiht" do %>
+  <i class="fas fa-utensils">レシピ内容を変更する</i>
+    <% end %>
+  </p>
+  </div>
   <!-- 投稿対するコメント機能 -->
-<div>
-  <p>コメント件数：<%= @post.post_comments.count %></p>
-<% @post.post_comments.each do |post_comment| %>
-    <p>
-    <%= post_comment.user.name %>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-    </p>
-  <!-- コメント削除 -->
-  <% if post_comment.user == current_user %>
-    <div>
-      <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-    </div>
-  <% end %>
+  <div class="side mx-auto col-lg-4">
+<div id="comment_area">
+  <%= render "comment_box", post: @post %>
 </div>
-<% end %>
 <div>
-  <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= form_with(model:[@post, @post_comment], remote: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: 'form-control' %>
     <%= f.submit "送信する" %>
   <% end %>
 </div>
-
-  <p class = "text-center border">
-    <%= link_to  edit_post_path(@post), class: "btn btn-whiht" do %>
-  <i class="fas fa-user-cog"></i>
-    <% end %>
-  </p>
+</div>
+</div>
+</div>
