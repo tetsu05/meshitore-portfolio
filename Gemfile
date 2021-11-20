@@ -73,3 +73,7 @@ gem 'enum_help'
 gem 'kaminari'
 gem 'simple_calendar', '~> 2.0'
 gem 'ransack'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
