@@ -1,57 +1,57 @@
-  <div class="container">
+<div class="container">
   <div class="row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
       <div>投稿者
-  <!-- ユーザ名 -->
-    <%= @user.name %>
-  <!-- プロフィール画像 -->
-    <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg") %>
+      <!-- ユーザ名 -->
+      <%= @user.name %>
+      <!-- プロフィール画像 -->
+      <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg") %>
+      </div>
+      <!--料理タイトル-->
+      <label style="display:block;">料理タイトル</label>
+        <%= @post.title %>
+      <!-- 料理画像 -->
+      <label style="display:block;">料理画像</label>
+        <%= attachment_image_tag(@post, :cooking_image, fallback: "no-image.jpg", size:'300x300') %>
+      <!--星評価-->
+      <div id="star-rate-<%= @post.id %>">オススメ度</div>
+      <script>
+      $('#star-rate-<%= @post.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= @post.rate %>,
+      });
+      </script>
+      <!-- レシピ紹介 -->
+      <label style="display:block;">レシピ紹介</label>
+        <%= @post.body %>
+      <!-- 投稿に対するいいね機能 -->
+      <td>
+        <div id="favorite_buttons_<%= @post.id %>">
+    　　  　<%= render "favorites/favorites", post: @post %>
+    　　</div>
+    　</td>
+    　<p class = "text-center border">
+      <%= link_to  edit_post_path(@post), class: "btn btn-whiht" do %>
+        <i class="fas fa-utensils">レシピ内容を変更する</i>
+      <% end %>
+      </p>
     </div>
-  <!--料理タイトル-->
-  <label style="display:block;">料理タイトル</label>
-    <%= @post.title %>
-  <!-- 料理画像 -->
-  <label style="display:block;">料理画像</label>
-    <%= attachment_image_tag(@post, :cooking_image, fallback: "no-image.jpg", size:'300x300') %>
-    <!--星評価-->
-  <div id="star-rate-<%= @post.id %>">オススメ度</div>
-    <script>
-    $('#star-rate-<%= @post.id %>').raty({
-      size: 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: <%= @post.rate %>,
-    });
-    </script>
-  <!-- レシピ紹介 -->
-  <label style="display:block;">レシピ紹介</label>
-    <%= @post.body %>
-  <!-- 投稿に対するいいね機能 -->
-  <td>
-    <div id="favorite_buttons_<%= @post.id %>">
-　　　<%= render "favorites/favorites", post: @post %>
-　　</div>
-　</td>
-　<p class = "text-center border">
-    <%= link_to  edit_post_path(@post), class: "btn btn-whiht" do %>
-  <i class="fas fa-utensils">レシピ内容を変更する</i>
-    <% end %>
-  </p>
+    <!-- 投稿対するコメント機能 -->
+    <div class="side mx-auto col-lg-4">
+      <div id="comment_area">
+        <%= render "comment_box", post: @post %>
+      </div>
+      <div>
+        <%= form_with(model:[@post, @post_comment], remote: true) do |f| %>
+          <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: 'form-control' %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <!-- 投稿対するコメント機能 -->
-  <div class="side mx-auto col-lg-4">
-<div id="comment_area">
-  <%= render "comment_box", post: @post %>
-</div>
-<div>
-  <%= form_with(model:[@post, @post_comment], remote: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: 'form-control' %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
-</div>
-</div>
 </div>

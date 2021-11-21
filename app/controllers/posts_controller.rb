@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).order(title: :asc).page(params[:page])
+    @posts = @q.result(distinct: true).order(title: :asc).page(params[:page]).per(8)
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
 

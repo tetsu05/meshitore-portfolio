@@ -74,6 +74,7 @@ gem 'kaminari'
 gem 'simple_calendar', '~> 2.0'
 gem 'ransack'
 gem 'dotenv-rails'
+gem 'devise-i18n'
 group :production do
   gem 'mysql2'
 end

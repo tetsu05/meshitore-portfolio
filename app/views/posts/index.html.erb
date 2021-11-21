@@ -1,28 +1,31 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-10">
-        <%= render 'search_form' %>
-<h2>いいねランキング</h2>
-<% @all_ranks.each.with_index(1) do |post,i| %>
-  <div class="col-lg-3">
-    第<%= i %>位
-  <%= link_to post_path(post.id) do %>
-<!-- 料理タイトル -->
-    <%= post.title %>
-<!-- 料理画像 -->
-    <%= attachment_image_tag(post, :cooking_image, fallback: "no-image.jpg", size:'200x200') %>
+  <div class="row">
+    <div class="mx-arto col-md-12">
+      <%= render 'search_form' %>
+      <h2>いいねランキング</h2>
+      <% @all_ranks.each.with_index(1) do |post,i| %>
+          第<%= i %>位
+        <%= link_to post_path(post.id) do %>
+      <!-- 料理タイトル -->
+          <%= post.title %>
+      <!-- 料理画像 -->
+          <%= attachment_image_tag(post, :cooking_image, fallback: "no-image.jpg", size:'200x200') %>
+        <% end %>
+      <% end %>
+      <h2>みんなの投稿</h2>
+      <div class="row">
+        <div class="col-md-10">
+          <% @posts.each do |post| %>
+            <%= link_to post_path(post.id) do %>
+          <!-- 料理タイトル -->
+            <%= post.title %>
+          <!-- 料理画像 -->
+              <%= attachment_image_tag(post, :cooking_image, fallback: "no-image.jpg", size:'150x150') %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <%= paginate @posts %>
+    </div>
   </div>
-  <% end %>
-<% end %>
-<h2>みんなの投稿</h2>
-<% @posts.each do |post| %>
-  <%= link_to post_path(post.id) do %>
-<!-- 料理タイトル -->
-    <%= post.title %>
-<!-- 料理画像 -->
-    <%= attachment_image_tag(post, :cooking_image, fallback: "no-image.jpg", size:'150x150') %>
-  <% end %>
-<% end %>
-</div>
-</div>
 </div>

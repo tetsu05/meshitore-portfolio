@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
- .jumbotron { background:url(food2.jpeg) center no-repeat; background-size: cover; height: 100vh;}
+ .jumbotron {
+   background: url(food2.jpeg) center no-repeat; background-size: cover; height: 100vh;
+ }
  
  h1 {
    font-family: 'Noto Serif JP',serif;

@@ -1,18 +1,18 @@
 <div class="container">
-    <div class="row">
-      <div class="mx-auto col-11 col-sm-10 col-lg-10 ">
-<h2>毎日のメニューや摂取カロリーを記録しよう！</h2>
-<%= link_to 'イベント追加', new_event_path %>
-
-<%= month_calendar events: @events do |date, events| %>
-  <%= date.day %>
-  <% events.each do |event| %>
-    <div>
-      <%= event.title %><br>
-      <%= event.content %>
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-10 ">
+      <h2>毎日のメニューや摂取カロリーを記録しよう！</h2>
+      <%= link_to 'イベント追加', new_event_path %>
+      
+      <%= month_calendar events: @events do |date, events| %>
+        <%= date.day %>
+        <% events.each do |event| %>
+          <div>
+            <%= event.title %><br>
+            <%= event.content %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
-<% end %>
-</div>
-</div>
+  </div>
 </div>

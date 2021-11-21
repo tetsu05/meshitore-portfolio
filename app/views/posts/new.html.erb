@@ -1,48 +1,48 @@
 <div class="container">
-    <div class="row">
-      <div class="col-10">
-<h2>自分のお気に入りのメニューを投稿しよう！</h2>
-<%= form_with(model: @post, local: true) do |f| %>
-  <!-- タイトル -->
-  <div>
-    <label style="display:block;">タイトル</label>
-    <%= f.text_field :title %>
+  <div class="row">
+    <div class="col-10">
+      <h2>自分のお気に入りのメニューを投稿しよう！</h2>
+      <%= form_with(model: @post, local: true) do |f| %>
+        <!-- タイトル -->
+        <div>
+          <label style="display:block;">タイトル</label>
+          <%= f.text_field :title %>
+        </div>
+      
+        <!-- 評価 -->
+        <div class="form-group row" id="star">
+          <%= f.label :rate,'オススメ度', class:'col-md-3 col-form-label' %>
+          <%= f.hidden_field :rate, id: :review_star %>
+        </div>
+      
+        <!-- 評価javascript -->
+        <script>
+        $('#star').raty({
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'post[rate]',
+          half: true,
+        });
+        </script>
+      
+        <!-- 料理画像 -->
+        <div>
+          <label style="display:block;">料理画像</label>
+          <%= f.attachment_field:cooking_image, placeholder: "プロフィール画像" %>
+        </div>
+      
+        <!-- レシピ紹介 -->
+        <div>
+          <label style="display:block;">レシピ紹介</label>
+          <%= f.text_area :body, size: '10x10', class: 'form-control' %>
+        </div>
+      
+        <div>
+          <%= f.submit "投稿する", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <!-- 評価 -->
-  <div class="form-group row" id="star">
-    <%= f.label :rate,'オススメ度', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :rate, id: :review_star %>
-  </div>
-
-  <!-- 評価javascript -->
-  <script>
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'post[rate]',
-    half: true,
-  });
-  </script>
-
-  <!-- 料理画像 -->
-  <div>
-    <label style="display:block;">料理画像</label>
-    <%= f.attachment_field:cooking_image, placeholder: "プロフィール画像" %>
-  </div>
-
-  <!-- レシピ紹介 -->
-  <div>
-    <label style="display:block;">レシピ紹介</label>
-    <%= f.text_area :body, size: '10x10', class: 'form-control' %>
-  </div>
-
-  <div>
-    <%= f.submit "投稿する", class: "btn btn-primary" %>
-  </div>
-<% end %>
-</div>
-</div>
 </div>
