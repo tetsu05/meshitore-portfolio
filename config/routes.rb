@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'events/index'
-  resources :events
   get 'homes/index'
   root to: 'homes#index'
   devise_for :users
   resources :users, only: [:show, :index, :edit, :update] do
+    resources :events, only: [:index, :new, :create]
     resources :relationships, only: [:create, :destroy]
     get 'follower' => 'relationships#follower', as: 'follower'
     get 'followed' => 'relationships#followed', as: 'followed'

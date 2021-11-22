@@ -1,11 +1,25 @@
-<tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no-image.jpg" , size:"40x40" %></td>
-      <td><%= user.name %></td>
-      <td>フォロー数：<%= user.followings.count %></td>
-      <td>フォロワー数：<%= user.followers.count %></td>
-      <td><%= link_to "show", user_path(user.id) %> </td>
-    </tr>
-  <% end %>
-</tbody>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-10">
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>プロフィール画像</th>
+            <th>ユーザー名</th>
+            <th colspan="4"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no-image.jpg" , size:"40x40" %></td>
+              <td><%= user.name %></td>
+              <td>フォロー数：<%= user.followings.count %></td>
+              <td>フォロワー数：<%= user.followers.count %></td>
+              <td><%= link_to "show", user_path(user.id) %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+    </div>
+  </div>
+</div>
