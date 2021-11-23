@@ -2,10 +2,10 @@
   <div class="row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
       <div class="mt-3">投稿者
-      <!-- ユーザ名 -->
-      <%= @user.name %>
-      <!-- プロフィール画像 -->
-      <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg") %>
+        <!-- ユーザ名 -->
+        <%= @user.name %>
+        <!-- プロフィール画像 -->
+        <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg") %>
       </div>
       <h3 class="m-3">
         <!--料理タイトル-->
