@@ -21,7 +21,7 @@
           </tr>
           <tr>
             <td class="text-center">メッセージ</td>
-            <td style="white-space: pre-wrap;"><%= @contact.message %></td>
+            <td style="white-space: pre-wrap;"><%= safe_join(@contact.message.split("\n"),tag(:br)) %></td>
           </tr>
         </tbody>
       </table>

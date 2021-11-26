@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-10 m-5">
-      <h2 class="text-center">お問い合わせ</h2>
+      <div class="text-center">
+        <h2 class="fas fa-envelope">お問い合わせ</h2>
+      </div>
       <%= form_for(@contact, url: confirm_path) do |f| %>
         <div class="form-group m-3">
           <%= f.label :name, 'お名前*' %>

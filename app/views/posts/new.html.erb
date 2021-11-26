@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-10 mt-3">
-      <h3 class="text-center">自分のお気に入りメニューを投稿しよう！</h3>
+      <div class="text-center">
+        <h2 class="fas fa-newspaper">自分のお気に入りメニューを投稿しよう！</h2>
+      </div>
       <%= form_with(model: @post, local: true) do |f| %>
         <!-- タイトル -->
         <div class="mt-3">

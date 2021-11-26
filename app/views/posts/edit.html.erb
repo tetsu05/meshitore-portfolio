@@ -1,34 +1,42 @@
 <div class="container">
   <div class="row">
-    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-<h2>投稿内容の変更</h2>
-<%= form_with model:@post, local:true do |f| %>
-  <!-- 評価 -->
-  <div class="form-group row" id="star">
-    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :rate, id: :review_star %>
-  </div>
-
-  <!-- 評価javascript -->
-  <script>
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'post[rate]',
-    half: true,
-  });
-  </script>
-  
-  <label style="display:block;">料理タイトル</label>
-  <%= f.text_field :title %>
-  <label style="display:block;">料理画像</label>
-  <%= f.attachment_field :cooking_image, placeholder: "プロフィール画像" %>
-  <label style="display:block;">レシピ紹介</label>
-  <%= f.text_area :body, size: '10x10', class: 'form-control' %>
-  <%= f.submit "更新する", class: "btn btn-secondary" %>
-<% end %>
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-5">
+      <h3 class="text-center">投稿内容を変更</h3>
+      <%= form_with model:@post, local:true do |f| %>
+        <!-- 評価 -->
+        <div class="form-group row mt-5" id="star">
+          <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+          <%= f.hidden_field :rate, id: :review_star %>
+        </div>
+      
+        <!-- 評価javascript -->
+        <script>
+        $('#star').raty({
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'post[rate]',
+          half: true,
+        });
+        </script>
+        
+        <div class="mt-4">
+          <label style="display:block;">料理タイトル</label>
+          <%= f.text_field :title %>
+        </div>
+        <div class="mt-4">
+        <label style="display:block;">料理画像</label>
+        <%= f.attachment_field :cooking_image, placeholder: "プロフィール画像" %>
+        </div>
+        <div class="mt-4">
+        <label style="display:block;">レシピ紹介</label>
+        <%= f.text_area :body, size: '10x10', class: 'form-control' %>
+        </div>
+        <div class="mt-4">
+        <%= f.submit "更新する", class: "btn btn-secondary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,25 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-10">
-      <h2 class="text-center">毎日の摂取カロリーを記録しておこう！！</h2>
-      
+    <div class="mx-auto col-10">
+      <div class="text-center mt-5">
+        <h2 class="fas fa-pencil-alt">毎日の摂取カロリーを記録しておこう！！</h2>
+      </div>
+
       <%= form_with(url: user_events_path, model: @event, local: true) do |form| %>
-      
-          <div class="time m-5">
+
+        <div class="time m-5">
           <%= form.label :日付の設定「日付のみ合わせてください」 %>
           <%= form.datetime_select :start_time %>
         </div>
-      
+
         <div class="content m-5">
           <%= form.label :総摂取カロリーを書いてください！ %>
           <%= form.text_field :content %>
         </div>
-      
-      
+
+
         <div class="submit m-5">
           <%= form.submit %>
         </div>
-      
+
       <% end %>
     </div>
   </div>
