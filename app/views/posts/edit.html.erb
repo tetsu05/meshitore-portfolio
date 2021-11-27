@@ -2,13 +2,21 @@
   <div class="row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-5">
       <h3 class="text-center">投稿内容を変更</h3>
+
+      <% if @post.errors.any? %>
+        <%= @post.errors.count %>件のエラーが発生しました。<br>
+        <% @post.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+
       <%= form_with model:@post, local:true do |f| %>
         <!-- 評価 -->
         <div class="form-group row mt-5" id="star">
           <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
           <%= f.hidden_field :rate, id: :review_star %>
         </div>
-      
+
         <!-- 評価javascript -->
         <script>
         $('#star').raty({
@@ -20,7 +28,7 @@
           half: true,
         });
         </script>
-        
+
         <div class="mt-4">
           <label style="display:block;">料理タイトル</label>
           <%= f.text_field :title %>
@@ -34,9 +42,14 @@
         <%= f.text_area :body, size: '10x10', class: 'form-control' %>
         </div>
         <div class="mt-4">
-        <%= f.submit "更新する", class: "btn btn-secondary" %>
+        <%= f.submit "更新する", class: "btn btn-primary" %>
         </div>
       <% end %>
+      <div class="mt-5">
+        <%= link_to("/posts/#{@post.id}/destroy",{method:"post"}) do %>
+         <button type="button" class="btn-danger">削除</button>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

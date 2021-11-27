@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
+  post "posts/:id/destroy" => "posts#destroy"
 
   resources :contacts, only: [:new, :create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
