@@ -1,23 +1,33 @@
 class Post < ApplicationRecord
+  validates :title, presence: true
+  validates :body, {presence: true, length: {maximum: 1000}}
   belongs_to :user
   attachment :cooking_image
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   #投稿と通知モデルの紐付け
   has_many :notifications, dependent: :destroy
-  
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  
+
   def create_notification_by(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+    # いいねされていない場合のみ、通知レコードを作成
+    if temp.blank?
         notification = current_user.active_notifications.new(
           post_id: id,
           visited_id: user_id,
           action: "like"
         )
+        # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
         notification.save if notification.valid?
+    end
   end
 
   def create_notification_comment!(current_user, post_comment_id)
@@ -44,5 +54,5 @@ class Post < ApplicationRecord
       end
       notification.save if notification.valid?
   end
-  
+
 end

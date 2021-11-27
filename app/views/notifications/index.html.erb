@@ -5,12 +5,14 @@
     <div class="text-center">
       <h2 class="m-5 fas fa-bell">通知</h2>
     </div>
+    
     <%= link_to destroy_all_notifications_path, method: :delete do %>
       <div>
         <i class="fas fa-trash" style="color: black;"></i>
         <h7 style="color: black;">全削除</h7>
       </div>
     <% end %>
+    
     <hr>
     <% if @notifications.exists? %>
         <div class="users-index">
@@ -19,6 +21,7 @@
     <% else %>
       <p>通知はありません</p>
     <% end %>
+    
     </div>
   </div>
 </div>

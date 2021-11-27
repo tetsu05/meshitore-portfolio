@@ -21,8 +21,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "新規投稿に成功しました！"
     else
-      @posts = Post.all
-      render 'index'
+      render 'new'
     end
   end
 

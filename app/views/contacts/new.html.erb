@@ -4,6 +4,14 @@
       <div class="text-center">
         <h2 class="fas fa-envelope">お問い合わせ</h2>
       </div>
+      
+      <% if @contact.errors.any? %>
+        <%= @contact.errors.count %>件のエラーが発生しました。<br>
+        <% @contact.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+              
       <%= form_for(@contact, url: confirm_path) do |f| %>
         <div class="form-group m-3">
           <%= f.label :name, 'お名前*' %>
@@ -22,7 +30,6 @@
 
         <div class="form-group m-3">
           <%= f.label :subject, 'お問い合わせ件名*' %>
-          <%#= f.select :subject, Contact.subjects_i18n, include_blank: '選択してください', class: 'form-control' , required: true  %>
           <%= f.select :subject, Contact.subjects.keys.map {|k| [I18n.t("enums.contact.subject.#{k}"), k]}, {include_blank: "選択してください",selected: "選択してください"}, class: 'form-control' , required: true %>
         </div>
 
