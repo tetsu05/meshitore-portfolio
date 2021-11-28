@@ -6,16 +6,10 @@ class RelationshipsController < ApplicationController
     redirect_to request.referer
 
     #フォローをしたタイミングで通知レコードを作成する
-    #@user = User.find(params[:relationship][:follower_id])
     @user = User.find(params[:user_id])
     current_user.follow(@user)
     #通知の作成
     @user.create_notification_follow!(current_user)
-    # ここまで
-    #respond_to do |format|
-      #format.html { redirect_to @user }
-      #format.js
-    #end
   end
 
   def destroy
