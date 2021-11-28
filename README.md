@@ -18,8 +18,10 @@
 筋肉をつける食事を知りたい時、健康的な食事のバリエーションを増やしたい時、ダイエットしたい時
 
 ## 設計書
-テーブル定義書  https://docs.google.com/spreadsheets/d/1-hYialJEh56v8D99n0n_f6EPbHEp8RHIyK2E7Q0Ahts/edit#gid=332539369
-アプリケーション詳細設計  https://docs.google.com/spreadsheets/d/1wvOK0Zc4fPTUPSNW-_AY7oyX9o5yEfvE-pIf3NTN8MQ/edit#gid=1031934256
+テーブル定義書<br>
+https://docs.google.com/spreadsheets/d/1-hYialJEh56v8D99n0n_f6EPbHEp8RHIyK2E7Q0Ahts/edit#gid=332539369<br>
+アプリケーション詳細設計<br>
+https://docs.google.com/spreadsheets/d/1wvOK0Zc4fPTUPSNW-_AY7oyX9o5yEfvE-pIf3NTN8MQ/edit#gid=1031934256  
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/133vimwFu6TdPqxPGsVS1VlOk7ALwO7LW6ValjN5EvBw/edit#gid=0
