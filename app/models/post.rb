@@ -22,11 +22,10 @@ class Post < ApplicationRecord
           visited_id: user_id,
           action: "like"
         )
-        # 自分の投稿に対するいいねの場合は、通知済みとする
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
+        # 自分の投稿に対するいいねじゃない場合、かつバリデーションをクリアするとき
+      if notification.visitor_id != notification.visited_id && notification.valid?
+        notification.save
       end
-        notification.save if notification.valid?
     end
   end
 

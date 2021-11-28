@@ -5,3 +5,4 @@ ja:
         service: 'サービスに関するご質問' # enumの値
         violation: '違反行為に関するご質問' # enumの値
         other_question: 'その他ご質問' # enumの値
+        

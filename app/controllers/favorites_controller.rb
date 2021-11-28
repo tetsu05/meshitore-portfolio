@@ -2,16 +2,16 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    post = Post.find(params[:post_id])
-    favorite = current_user.favorites.new(post_id: post.id)
+    @post = Post.find(params[:post_id])
+    favorite = current_user.favorites.new(post_id: @post.id)
     favorite.save
     #redirect_to post_path(post)
 
-    favorite = current_user.favorites.new(post_id: @post)
-      favorite.save
-      @post = Post.find(params[:post_id])
-      #通知の作成
-      @post.create_notification_by(current_user)
+    # favorite = current_user.favorites.new(post_id: @post)
+    #   favorite.save
+    # @post = Post.find(params[:post_id])
+    #通知の作成
+    @post.create_notification_by(current_user)
       #respond_to do |format|
         #format.html {redirect_to request.referrer}
         #format.js

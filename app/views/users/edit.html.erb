@@ -3,9 +3,9 @@
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
       <h2>ユーザー情報を更新</h2>
       
-      <% if @contact.errors.any? %>
-        <%= @contact.errors.count %>件のエラーが発生しました。<br>
-        <% @contact.errors.full_messages.each do |message| %>
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生しました。<br>
+        <% @user.errors.full_messages.each do |message| %>
           <%= message %>
         <% end %>
       <% end %>
@@ -17,7 +17,9 @@
         <%= f.attachment_field:profile_image, placeholder: "プロフィール画像" %>
         <label style="display:block;">自己紹介</label>
         <%= f.text_area :introduction, size: '10x10', class: 'form-control' %>
-        <%= f.submit "更新する", class: "btn btn-secondary" %>
+        <div class="mt-5">
+          <%= f.submit "更新する", class: "btn btn-secondary" %>
+        </div>
       <% end %>
     </div>
   </div>
